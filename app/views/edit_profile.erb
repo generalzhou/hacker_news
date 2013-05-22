@@ -1,0 +1,20 @@
+
+<p>user: <%= user.name %></p>
+<p>created: <%= user.days_active %> days ago</p>
+
+<form action="/update_profile" method="post">
+
+<p>about: <textarea cols="40" rows="5" name="about"><%=user.about%></textarea></p>
+<p>email: <input type="text" name="email" value="<%= user.email %>" ></p>
+
+<a href='/change_password'>change password</a>
+<br>
+<a href="/user/<%= user.id %>/posts">posts</a>
+<br>
+<a href="/user/<%= user.id %>/comments">comments</a>
+<br>
+
+<br>
+<input type="submit" value="update">
+
+</form>

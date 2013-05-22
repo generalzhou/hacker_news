@@ -1,0 +1,8 @@
+
+<% if find_user %>
+  <% user = find_user %>
+  <a href="/user/<%=user.id %>"><%=user.name %></a> | 
+  <a href="/logout">logout</a>
+<% else %>
+  <a href="/login">login</a>
+<% end %>

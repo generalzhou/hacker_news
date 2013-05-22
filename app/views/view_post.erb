@@ -1,0 +1,31 @@
+<h1><%= post.title %></h1>
+<h4>
+  posted by <a href='/user/<%=post.user.id%>'><%=post.user.name%></a>
+</h4>
+<% if post.url %>
+  <p><a href="<%= post.full_url%>"><%= post.url%></a></p>
+<% else %>
+  <p><%= post.text %></p>
+<% end %>
+
+
+<h2>Comment</h2>
+<h4><%= errors.first if errors %></h4>
+
+<form action="/post/<%=post.id%>/add_comment" method="post">
+  Comment: <textarea name="comment"></textarea>
+  <br><br>
+  <input type='submit' value='submit'>
+</form>
+
+<ul>
+<% post.comments.each do |comment| %>
+<li>
+  <p class="comment">
+    <%= comment.text %>
+  </p>
+  <p>
+    <a href='/user/<%=post.user.id%>'><%=comment.user.name%></a>
+  </p>
+</li>
+<% end %>
