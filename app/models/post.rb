@@ -2,6 +2,9 @@ class Post < ActiveRecord::Base
 
   has_many :comments
   belongs_to :user
+
+  has_many :post_votes
+  has_many :users, :through => :post_votes
   
   validates :title, :user, :presence => :true
   validate :url_or_text

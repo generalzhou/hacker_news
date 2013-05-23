@@ -13,6 +13,26 @@ post '/submit' do
   end
 end
 
+get '/post/:id/vote' do
+  if (post = Post.find_by_id(params[:id])) &&  (user = find_user)
+    unless post.users.find_by_id(user.id)
+      post.users << user
+    end
+  end
+  redirect '/'
+end
+
+get '/post/:id/unvote' do
+  if (post = Post.find_by_id(params[:id])) &&  (user = find_user)
+    if post.users.find_by_id(user.id)
+      post.users.delete(user)
+      erb :index
+    end
+  end
+  redirect '/'
+end
+
+
 get '/post/:id' do
    if post = Post.find_by_id(params[:id])
       erb :view_post, :locals => { :post => post, :errors =>  false}

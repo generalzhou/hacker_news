@@ -1,0 +1,40 @@
+*{
+  font-family:Georgia;
+}
+body,html,.container{
+    height:100%;
+
+}
+
+.container, header {
+  background-color: lightblue;
+  margin: 0 auto;
+  width: 80%;
+  padding: 0px 20px 20px 20px;
+
+}
+
+th {
+  text-align: left;
+}
+
+header {
+  background-color:#FD6601;
+  height:8px;
+}
+
+ol {
+  margin:0;
+  padding: 20px;
+}
+
+header a{
+
+  color: black;
+  text-decoration: none;
+}
+
+
+.jacker_news{
+  font-weight:bold; 
+}

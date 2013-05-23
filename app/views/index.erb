@@ -1,12 +1,24 @@
 <ol>
 <% Post.all.each do |post| %>
   <% unless post.url.nil? %> 
-  <li><a href='<%=post.full_url%>'><%=post.title %></a> (<%=post.url_domain%>)
+  <li>
+    <% p post.users.include?(find_user) %>
+    <% if user = find_user %>
+      <% if post.users.include?(user) %>
+        <a href='/post/<%=post.id%>/unvote'>unvote!</a>
+      <% else %>
+        <a href='/post/<%=post.id%>/vote'>vote!</a> 
+      <% end %>
+      <%= post.users.count %> votes
+    <% end %>
+
+    <a href='<%=post.full_url%>'><%=post.title %></a>
+      (<%=post.url_domain%>)
     <br>
   by <a href='/user/<%=post.user.id%>'><%=post.user.name%></a>
     <%= post.age %> hours ago | 
-    <a href='/post/<%=post.id%>'><%= post.comments.count %> comments</a></li>
-  <% end %>
+      <a href='/post/<%=post.id%>'><%= post.comments.count %> comments</a></li>
+    <% end %>
   <% end %>
 </ol>
 
